@@ -13,7 +13,7 @@
 <body>
     <div class="footer-basic">
         <footer>
-            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a><a href="https://github.com/sirine-djaouel"><i class="icon ion-social-github"></i></a></div>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="index.php">Accueil</a></li>
                 <li class="list-inline-item"><a href="#">Services</a></li>

@@ -1,4 +1,8 @@
 <?php
+session_start();
+?>
+
+<?php
 $bdd = mysqli_connect("localhost","root","","moduleconnexion");
 $result=mysqli_query($bdd, "SELECT * FROM utilisateurs");
 $table=mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -37,8 +41,8 @@ mysqli_close($bdd);
       <title>Tableau My SQL</title>
    </head>
    <body>
-      <form action="index.php">
-         <button type="submit">Retour</button>
-      </form>
+     
+	   <button type="submit"><a href=profil.php>Retour</a></button>
+   
    </body>
 </html>

@@ -3,7 +3,6 @@
 session_start();
 $id = $_SESSION["id"];
 $bdd = mysqli_connect("localhost","root","","moduleconnexion");
-
 $req= mysqli_query($bdd,"SELECT * FROM utilisateurs WHERE id = $id");
 
 $res= mysqli_fetch_all($req,MYSQLI_ASSOC);

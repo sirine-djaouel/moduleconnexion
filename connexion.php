@@ -3,7 +3,6 @@
 session_start();
 
 $connect = mysqli_connect("localhost","root","","moduleconnexion");
-
 ?>
 
 
@@ -36,7 +35,7 @@ $connect = mysqli_connect("localhost","root","","moduleconnexion");
 
                             $login=$_POST['login'];
                             $password=$_POST['password'];
-                            $sql=mysqli_query ($connect,"SELECT * FROM utilisateurs WHERE login='$login' AND password='$password'");
+                            $sql=mysqli_query ($connect,"SELECT * FROM utilisateurs WHERE login='$login'");
                             $res= mysqli_fetch_all($sql); 
                             
                             if (empty($res)) {
@@ -44,9 +43,11 @@ $connect = mysqli_connect("localhost","root","","moduleconnexion");
                             }
                             else {
                                 if($res[0][4] == $password){
-                                    if ( $password == 'admin'){
+                                    if ( $login == 'admin'){
                                         
+										$_SESSION["id"] = $res[0][0];
                                         header ("refresh:4;url=admin.php");
+										echo 'Merci de patienter';
                             
                                     }else {
                                         

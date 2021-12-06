@@ -10,7 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Maitree:wght@300&display=swap" rel="stylesheet">
-            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Inscription</title>
 </head>
     <body>
@@ -33,47 +33,48 @@ session_start();
             <button class=submit value="S'inscrire" name="inscription">S'inscrire</button>
             <p class="message">Tu as déjà un compte ?<a href="connexion.php">Par ici !</a></p>
             <?php
-              $bdd = mysqli_connect("localhost","root","","moduleconnexion");
-
+            $bdd = mysqli_connect("localhost","root","","moduleconnexion");
             if (isset($_SESSION['login']) == false)
             {
               
                 if (isset($_POST['inscription']) && !empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['confpw']) && !empty($_POST['nom']) && !empty($_POST['prenom']))
                 {
                   
-                    $login = $_POST['login'];
-                    $mdp = $_POST['password'];
-					          $nom = $_POST['nom'];
-					          $prenom = $_POST['prenom'];
-					          $password = $_POST['password'];
-					          $conf = $_POST['confpw'];
-                    $checklogin = "SELECT login FROM utilisateurs WHERE login = '$login'";
-                    $query = mysqli_query($bdd, $checklogin);
-                    $veriflogin = mysqli_fetch_all($query);
+                    	$login = $_POST['login'];
+                    	$mdp = $_POST['password'];
+					            $nom = $_POST['nom'];
+					            $prenom = $_POST['prenom'];
+					            $password = $_POST['password'];
+					            $conf = $_POST['confpw'];
+                   		$checklogin = "SELECT login FROM utilisateurs WHERE login = '$login'";
+                    	$query = mysqli_query($bdd, $checklogin);
+                    	$veriflogin = mysqli_fetch_all($query);
 
                     if (empty($veriflogin))
                     {
                         if ($_POST['password'] == $_POST['confpw'])
                         {
-                            
-                            $ajoutbdd = 'INSERT INTO utilisateurs (login, prenom, nom, password) VALUES ("'.$login.'", "'.$prenom.'", "'.$nom.'", "'.$password.'")';
+                           
+                            $ajoutbdd = 'INSERT INTO utilisateurs (login, prenom, nom, password) VALUES ("'.$login.'", "'.$prenom.'", 									"'.$nom.'", "'.$password.'")';
                             $ajout = mysqli_query($bdd, $ajoutbdd);
-                            echo 'Bienvenue !';
-                            
+							echo '<p style="color:#3895D3;">Bienvenue ! Veuillez vous connecter pour accéder à votre profil.</p>';
+							header('Location:connexion.php');
+							
                         }
-
+						 
                         else
                         {
-                           echo 'La mot de passe et sa confirmation ne sont pas semblable. Réessayez.';
+                           echo '<p style="color:#ff0000;">La mot de passe et sa confirmation ne sont pas semblable. Réessayez.</p>';
                         }
                     }
 
                     
                     else
                     {   
-                        echo 'login pas disponible, trouvez-en un autre.';
+                        echo '<p style="color:#ff0000;">login pas disponible, trouvez-en un autre.</p>';
                     }
                 }
+				
                 mysqli_close($bdd);
             }
          
